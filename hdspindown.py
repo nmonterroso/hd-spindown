@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 DEVICE_NAME = 'sda'
-TIME_THRESHOLD = 1*60  # in seconds
+TIME_THRESHOLD = 10*60  # in seconds
 STATS_FILE = 'stats.json'
 
 
@@ -48,6 +48,7 @@ def get_sector_data():
 
 def should_spin_down():
   stats_file = f'{os.path.dirname(os.path.realpath(__file__))}/{STATS_FILE}'
+  print(f'stats file: {stats_file}')
   sectors_read, sectors_written = get_sector_data()
 
   if sectors_read is None and sectors_written is None:
